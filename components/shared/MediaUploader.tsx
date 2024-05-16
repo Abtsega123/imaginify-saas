@@ -1,3 +1,5 @@
+"use client";
+
 import { useToast } from "@/components/ui/use-toast"
 import { dataUrl, getImageSize } from "@/lib/utils";
 import { CldImage, CldUploadWidget } from "next-cloudinary"
@@ -30,11 +32,7 @@ const MediaUploader = ({
       secureURL: result?.info?.secure_url
     }))
 
-    if (typeof onValueChange === 'function') {
-      onValueChange(result?.info?.public_id);
-    } else {
-      console.error('onValueChange is not a function');
-    }
+    onValueChange(result?.info?.public_id)
 
     toast({
       title: 'Image uploaded successfully',
